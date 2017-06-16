@@ -9,3 +9,7 @@
  - [Nodemon](https://www.npmjs.com/package/nodemon): restarts server when files are saved with changes.
  - [Marked](https://www.npmjs.com/package/marked): converts markdown syntax to html.
  - [Mongoose](http://mongoosejs.com/): abstracts away the MongoDB boilerplate for a simple Schema solution.
+
+ ## Experiments
+
+  - I'll be using module inline styles (i.e. `import style from ‘./style’;` and `style={style.uniqueName}`), so we'll see how that goes. 
