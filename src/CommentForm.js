@@ -1,27 +1,44 @@
 import React, { Component } from 'react';
 import style from './style';
+import axios from 'axios';
 
 class CommentForm extends Component {
 	
 	constructor(props) {
 		super(props);
-		this.state = { author: '', text: '' };
-		this.handleAuthorChange = this.handleAuthorChange.bind(this);
-		this.handleTextChange = this.handleTextChange.bind(this);
+		this.state = { username: '', email: '', password: '' };
+		this.handleUsernameChange = this.handleUsernameChange.bind(this);
+		this.handleEmailChange = this.handleEmailChange.bind(this);
+		this.handlePasswordChange = this.handlePasswordChange.bind(this);
  		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleAuthorChange(e) {
-		this.setState({ author: e.target.value });
+	handleUsernameChange(e) {
+		this.setState({ username: e.target.value });
 	}
 
-	handleTextChange(e) {
-		this.setState({ text: e.target.value });
+	handleEmailChange(e) {
+		this.setState({ email: e.target.value });
+	}
+
+	handlePasswordChange(e) {
+		this.setState({ password: e.target.value });
 	}
 
 	handleSubmit(e) {
 		e.preventDefault();
-		console.log(`${this.state.author} said “${this.state.text}”`)
+		axios.post('http://localhost:1701/users', {
+		    'username': this.state.username,
+		    'email': this.state.email,
+		    'password': this.state.password
+		  })
+		  .then(function (response) {
+		    console.log(response);
+		  })
+		  .catch(function (error) {
+		    console.log(error);
+		  });
+		console.log(`${this.state.username} said “${this.state.text}”`)
 	}
 
 	render() {
@@ -32,16 +49,23 @@ class CommentForm extends Component {
 						type='text'
 						placeholder='Your name…'
 						style={ style.commentFormAuthor}
-						value={ this.state.author }
-						onChange={ this.handleAuthorChange } />
+						value={ this.state.username }
+						onChange={ this.handleUsernameChange } />
 					<input
 						type='text'
-						placeholder='Say something…'
+						placeholder='Your email...'
 						style={ style.commentFormText}
-						value={ this.state.text }
-						onChange={ this.handleTextChange } />
+						value={ this.state.email }
+						onChange={ this.handleEmailChange } />
+					<input
+						type='text'
+						placeholder='Your password…'
+						style={ style.commentFormText}
+						value={ this.state.password }
+						onChange={ this.handlePasswordChange } />
 					<input
 						type='submit'
+						action="localhost:1701/users"
 						style={ style.commentFormPost }
 						value='Post' />
 				</form>
