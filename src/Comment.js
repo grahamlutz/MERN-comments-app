@@ -4,17 +4,14 @@ import marked from 'marked';
 
 class Comment extends Component {
 
-	rawMarkup() {
-		let rawMarkup = marked( this.props.children.toString() );
-		return { __html: rawMarkup };
-	}
-
 	render() {
 		return(
 
 				<div style={ style.comment }>
-					<h3>{this.props.author}</h3>
-					<span dangerouslySetInnerHTML={ this.rawMarkup() } />
+					<h2>{}</h2>
+					<h3>{this.props.children.username}</h3>
+					<h4>{ this.props.children.email} </h4>
+					<h4>{ this.props.children.password} </h4>
 				</div>
 
 			)
