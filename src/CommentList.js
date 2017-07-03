@@ -5,10 +5,10 @@ import style from './style';
 
 class CommentList extends Component {
 	render() {
-		let commentNodes = this.props.data.map( comment => {
+		let commentNodes = this.props.data.map( user => {
 			return(
-					<Comment author={ comment.author } key={ comment.id }>
-						{ comment.text }
+					<Comment author={ user.username } key={ user.id }>
+						{user}
 					</Comment>
 				)
 		})
