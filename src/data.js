@@ -1,6 +1,8 @@
-const data = fetch('http://localhost:1701', {
+const data = fetch('http://localhost:1701/users', {
      headers: new Headers({'content-type': 'application/json'})
    }).then(data => data.json());
+
+
 
 
 data.catch((err) => console.log(err))
