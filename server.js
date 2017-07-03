@@ -12,7 +12,7 @@ var PORT = process.env.API_PORT || 3001;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-router.get('/', (req, res) => {
+app.get('/', (req, res) => {
 	res.json({ message: 'API Initialized!' });
 })
 
